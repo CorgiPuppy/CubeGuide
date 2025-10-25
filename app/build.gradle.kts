@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.cubeguide"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.cubeguide"
