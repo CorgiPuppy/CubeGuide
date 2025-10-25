@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">CubeGuide</string>
+
+    <string name="logo_description">Rubik s Cube</string>
+
+    <string name="site_name">CubeGuide</string>
+    <string name="site_description">Обучающий метод по сборке кубика Рубика</string>
+
+    <string name="hint_enter_name">Введите ваше имя..</string>
+    <string name="profile_button">Профиль</string>
+    <string name="login_button">Регистрация</string>
+    <string name="contacts_button">Контакты</string>
 </resources>
