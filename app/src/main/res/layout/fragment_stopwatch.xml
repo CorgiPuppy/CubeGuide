@@ -56,7 +56,7 @@
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@id/reset_button"
+            app:layout_constraintStart_toEndOf="@id/pause_button"
             app:layout_constraintTop_toTopOf="@id/pause_button" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
