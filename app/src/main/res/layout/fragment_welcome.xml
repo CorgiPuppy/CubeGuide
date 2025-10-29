@@ -148,17 +148,17 @@ android:orientation="vertical">
 
             android:text="@string/pass_test_button"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/login_button"
+            app:layout_constraintEnd_toStartOf="@id/shop_button"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toEndOf="@id/start_guideline"
             app:layout_constraintTop_toBottomOf="@id/flow" />
 
         <Button
-            android:id="@+id/login_button"
+            android:id="@+id/shop_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="@string/login_button"
+            android:text="@string/shop_button"
 
             app:layout_constraintEnd_toStartOf="@id/stopwatch_button"
             app:layout_constraintHorizontal_chainStyle="packed"
@@ -174,8 +174,8 @@ android:orientation="vertical">
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toEndOf="@id/login_button"
-            app:layout_constraintTop_toTopOf="@+id/login_button" />
+            app:layout_constraintStart_toEndOf="@id/shop_button"
+            app:layout_constraintTop_toTopOf="@+id/shop_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

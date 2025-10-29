@@ -8,7 +8,7 @@
 
     <string name="hint_enter_name">Введите ваше имя..</string>
     <string name="pass_test_button">Пройти тест</string>
-    <string name="login_button">Регистрация</string>
+    <string name="shop_button">Магазин</string>
     <string name="stopwatch_button">Секундомер</string>
 
     <string name="start_button">Start</string>
