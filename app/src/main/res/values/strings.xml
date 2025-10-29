@@ -9,5 +9,5 @@
     <string name="hint_enter_name">Введите ваше имя..</string>
     <string name="profile_button">Профиль</string>
     <string name="login_button">Регистрация</string>
-    <string name="contacts_button">Контакты</string>
+    <string name="stopwatch_button">Секундомер</string>
 </resources>
