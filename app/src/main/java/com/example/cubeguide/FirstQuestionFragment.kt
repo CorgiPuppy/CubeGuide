@@ -26,6 +26,11 @@ class FirstQuestionFragment : Fragment() {
             actionBar.title = "Вопрос 1 из 6"
         }
 
+        val nextButton = view.findViewById<Button>(R.id.next_button)
+        nextButton.setOnClickListener {
+            view.findNavController()
+                .navigate(R.id.action_firstQuestionFragment_to_secondQuestionFragment)
+        }
         return view
     }
 }
