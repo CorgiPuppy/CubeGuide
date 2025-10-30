@@ -35,19 +35,61 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
+        <ImageView
+            android:id="@+id/megaminx"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="24dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/megaminx_description"
+            android:scaleType="centerCrop"
+            android:src="@drawable/megaminx"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/first_question"
+            tools:visibility="visible" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/start_guideline"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="21dp" />
+
+        <EditText
+            android:id="@+id/enterFirstAnswer"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="30dp"
+            android:autofillHints="name"
+            android:backgroundTint="@color/white"
+            android:hint="@string/hint_enter_answer"
+            android:inputType="textMultiLine"
+
+            android:textColorHint="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/next_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/megaminx" />
+
         <Button
             android:id="@+id/next_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:paddingBottom="20dp"
+            android:paddingBottom="10dp"
             android:paddingStart="30dp"
             android:paddingEnd="30dp"
             android:background="@drawable/rounded_button"
             android:text="@string/next_button"
             android:textSize="30sp"
 
-            app:layout_constraintTop_toBottomOf="@id/first_question"
+            app:layout_constraintTop_toBottomOf="@id/enterFirstAnswer"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
