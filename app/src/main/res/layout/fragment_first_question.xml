@@ -26,6 +26,10 @@
             android:id="@+id/first_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/first_question"
+            android:textSize="20sp"
+            style="@style/question_style"
 
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +45,7 @@
             android:paddingEnd="30dp"
             android:background="@drawable/rounded_button"
             android:text="@string/next_button"
-            android:textSize="50sp"
+            android:textSize="30sp"
 
             app:layout_constraintTop_toBottomOf="@id/first_question"
             app:layout_constraintEnd_toEndOf="parent" />
