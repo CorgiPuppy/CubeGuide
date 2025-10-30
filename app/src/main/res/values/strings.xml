@@ -7,7 +7,7 @@
     <string name="site_description">Обучающий метод по сборке кубика Рубика</string>
 
     <string name="hint_enter_name">Введите ваше имя..</string>
-    <string name="pass_test_button">Пройти тест</string>
+    <string name="test_button">Тест</string>
     <string name="shop_button">Магазин</string>
     <string name="stopwatch_button">Секундомер</string>
 

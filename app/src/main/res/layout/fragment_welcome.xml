@@ -139,14 +139,14 @@ android:orientation="vertical">
             android:src="@drawable/two_on_two" />
 
         <Button
-            android:id="@+id/pass_test_button"
+            android:id="@+id/test_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="16dp"
             android:padding="10dp"
 
-            android:text="@string/pass_test_button"
+            android:text="@string/test_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/shop_button"
             app:layout_constraintHorizontal_chainStyle="spread"
@@ -162,8 +162,8 @@ android:orientation="vertical">
 
             app:layout_constraintEnd_toStartOf="@id/stopwatch_button"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toEndOf="@id/pass_test_button"
-            app:layout_constraintTop_toTopOf="@+id/pass_test_button" />
+            app:layout_constraintStart_toEndOf="@id/test_button"
+            app:layout_constraintTop_toTopOf="@+id/test_button" />
 
         <Button
             android:id="@+id/stopwatch_button"
