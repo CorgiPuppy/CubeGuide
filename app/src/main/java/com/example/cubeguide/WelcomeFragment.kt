@@ -26,8 +26,14 @@ class WelcomeFragment : Fragment() {
             actionBar.title = "CubeGuide"
         }
 
-        val startButton = view.findViewById<Button>(R.id.stopwatch_button)
-        startButton.setOnClickListener {
+        val testButton = view.findViewById<Button>(R.id.test_button)
+        testButton.setOnClickListener {
+            view.findNavController()
+                .navigate(R.id.action_welcomeFragment_to_firstQuestionFragment)
+        }
+
+        val stopwatchButton = view.findViewById<Button>(R.id.stopwatch_button)
+        stopwatchButton.setOnClickListener {
             view.findNavController()
                 .navigate(R.id.action_welcomeFragment_to_stopwatchFragment)
         }
