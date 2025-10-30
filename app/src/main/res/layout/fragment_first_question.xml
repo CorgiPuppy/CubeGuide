@@ -7,7 +7,6 @@
     android:background="@color/blue"
     android:orientation="vertical">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/first_question_page"
         android:layout_width="match_parent"

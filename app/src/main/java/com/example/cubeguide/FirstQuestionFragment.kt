@@ -16,7 +16,7 @@ class FirstQuestionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_welcome, container, false)
+        val view = inflater.inflate(R.layout.fragment_first_question, container, false)
 
         val toolbar = view.findViewById<MaterialToolbar>(R.id.toolbar)
         val mActivity = activity as AppCompatActivity
