@@ -16,4 +16,6 @@
     <string name="start_button">Start</string>
     <string name="pause_button">Pause</string>
     <string name="reset_button">Reset</string>
+
+    <string name="next_button">→</string>
 </resources>
