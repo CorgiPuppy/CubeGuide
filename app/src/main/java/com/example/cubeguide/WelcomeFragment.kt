@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import com.google.android.material.appbar.MaterialToolbar
 
 class WelcomeFragment : Fragment() {
     override fun onCreateView(
@@ -14,12 +17,21 @@ class WelcomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_welcome, container, false)
-        val startButton = view.findViewById<Button>(R.id.stopwatch_button)
 
+        val toolbar = view.findViewById<MaterialToolbar>(R.id.toolbar)
+        val mActivity = activity as AppCompatActivity
+        mActivity.setSupportActionBar(toolbar);
+        var actionBar : ActionBar? = mActivity.supportActionBar
+        if(actionBar != null){
+            actionBar.title = "CubeGuide"
+        }
+
+        val startButton = view.findViewById<Button>(R.id.stopwatch_button)
         startButton.setOnClickListener {
             view.findNavController()
                 .navigate(R.id.action_welcomeFragment_to_stopwatchFragment)
         }
+
         return view
     }
 }
