@@ -26,4 +26,6 @@
     <string name="hint_enter_answer">Введите ваш ответ..</string>
 
     <string name="next_button">→</string>
+
+    <string name="second_question">Какой формулой можно выполнить "Пиф-паф"?</string>
 </resources>
