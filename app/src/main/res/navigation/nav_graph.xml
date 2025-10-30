@@ -11,10 +11,17 @@
         <action
             android:id="@+id/action_welcomeFragment_to_stopwatchFragment"
             app:destination="@id/stopwatchFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_firstQuestionFragment"
+            app:destination="@id/firstQuestionFragment" />
     </fragment>
     <fragment
         android:id="@+id/stopwatchFragment"
         android:name="com.example.cubeguide.StopwatchFragment"
         android:label="StopwatchFragment" >
     </fragment>
+    <fragment
+        android:id="@+id/firstQuestionFragment"
+        android:name="com.example.cubeguide.FirstQuestionFragment"
+        android:label="FirstQuestionFragment" />
 </navigation>
