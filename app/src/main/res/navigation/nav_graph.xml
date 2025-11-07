@@ -25,13 +25,5 @@
         android:id="@+id/firstQuestionFragment"
         android:name="com.example.cubeguide.FirstQuestionFragment"
         android:label="FirstQuestionFragment" >
-        <action
-            android:id="@+id/action_firstQuestionFragment_to_secondQuestionFragment"
-            app:destination="@id/secondQuestionFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/secondQuestionFragment"
-        android:name="com.example.cubeguide.SecondQuestionFragment"
-        android:label="fragment_second_question"
-        tools:layout="@layout/fragment_second_question" />
 </navigation>
