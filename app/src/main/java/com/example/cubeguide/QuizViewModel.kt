@@ -44,4 +44,31 @@ class QuizViewModel : ViewModel() {
     var currentIndex = 0
     var score = 0
     var isGameFinished = false
+
+    fun getCurrentQuestion(): Question {
+        return questions[currentIndex]
+    }
+
+    fun getTotalQuestionsCount(): Int = questions.size
+
+    fun checkAnswer(userAnswers: List<String>) {
+        val currentQ = questions[currentIndex]
+
+        val normalizedUserAnswers = userAnswers.map { it.trim().lowercase() }.sorted()
+        val normalizedCorrectAnswers = currentQ.correctAnswers.map { it.trim().lowercase() }.sorted()
+
+        if (currentQ.type == QuestionType.CHECKBOX) {
+            if (normalizedUserAnswers == normalizedCorrectAnswers)
+                score++
+        } else
+            if (userAnswers.isNotEmpty() && normalizedCorrectAnswers.contains(normalizedUserAnswers[0]))
+                score++
+    }
+
+    fun moveToInput() {
+        if (currentIndex < questions.size - 1)
+            currentIndex++
+        else
+            isGameFinished = true
+    }
 }
