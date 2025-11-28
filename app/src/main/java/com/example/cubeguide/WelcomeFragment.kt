@@ -38,6 +38,17 @@ class WelcomeFragment : Fragment() {
                 .navigate(R.id.action_welcomeFragment_to_stopwatchFragment)
         }
 
+        val shareButton = view.findViewById<Button>(R.id.share_button)
+        shareButton.setOnClickListener {
+            val sendIntent = android.content.Intent().apply {
+                action = android.content.Intent.ACTION_SEND
+                putExtra(android.content.Intent.EXTRA_TEXT, "Привет! Я изучаю Android и сделал крутой квиз CubeGuide!")
+                type = "text/plain"
+            }
+            val shareIntent = android.content.Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
+        }
+
         return view
     }
 }
