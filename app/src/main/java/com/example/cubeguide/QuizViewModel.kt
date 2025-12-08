@@ -65,7 +65,7 @@ class QuizViewModel : ViewModel() {
                 score++
     }
 
-    fun moveToInput() {
+    fun moveToNext() {
         if (currentIndex < questions.size - 1)
             currentIndex++
         else
