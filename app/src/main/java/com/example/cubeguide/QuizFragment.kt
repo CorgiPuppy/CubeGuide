@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputLayout
 
 class QuizFragment : Fragment() {
@@ -106,5 +107,10 @@ class QuizFragment : Fragment() {
         viewModel.checkAnswer(userAnswers)
 
         viewModel.moveToNext()
+
+        if (viewModel.isGameFinished)
+            findNavController().navigate(R.id.action_quizFragment_to_resultFragment)
+        else
+            updateUI()
     }
 }
