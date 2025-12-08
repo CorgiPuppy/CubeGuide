@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Button
+import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 
 class ResultFragment : Fragment() {
     private lateinit var viewModel: QuizViewModel
