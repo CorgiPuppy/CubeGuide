@@ -37,7 +37,7 @@ class QuizViewModel : ViewModel() {
             type = QuestionType.FREE_INPUT,
             answers = emptyList(),
             correctAnswers = listOf("megaminx", "мегаминкс"),
-            ImageResId = R.drawable.four_on_four
+            imageResId = R.drawable.four_on_four
         )
     )
 
