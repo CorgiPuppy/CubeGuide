@@ -29,7 +29,7 @@ class WelcomeFragment : Fragment() {
         val testButton = view.findViewById<Button>(R.id.test_button)
         testButton.setOnClickListener {
             view.findNavController()
-                .navigate(R.id.action_welcomeFragment_to_firstQuestionFragment)
+                .navigate(R.id.action_welcomeFragment_to_quizFragment)
         }
 
         val stopwatchButton = view.findViewById<Button>(R.id.stopwatch_button)
