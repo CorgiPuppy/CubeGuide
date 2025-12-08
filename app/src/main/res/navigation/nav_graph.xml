@@ -13,17 +13,35 @@
             android:id="@+id/action_welcomeFragment_to_stopwatchFragment"
             app:destination="@id/stopwatchFragment" />
         <action
-            android:id="@+id/action_welcomeFragment_to_firstQuestionFragment"
-            app:destination="@id/firstQuestionFragment" />
+            android:id="@+id/action_welcomeFragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/stopwatchFragment"
         android:name="com.example.cubeguide.StopwatchFragment"
         android:label="StopwatchFragment" >
     </fragment>
+
     <fragment
-        android:id="@+id/firstQuestionFragment"
-        android:name="com.example.cubeguide.FirstQuestionFragment"
-        android:label="FirstQuestionFragment" >
+        android:id="@+id/quizFragment"
+        android:name="com.example.cubeguide.QuizFragment"
+        android:label="QuizFragment" >
+        <action
+            android:id="@+id/action_quizFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="false"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.cubeguide.ResultFragment"
+        android:label="ResultFragment" >
+        <action
+            android:id="@+id/action_resultFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 </navigation>
