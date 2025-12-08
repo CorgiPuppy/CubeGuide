@@ -91,4 +91,20 @@ class QuizFragment : Fragment() {
             }
         }
     }
+
+    private fun processAnswer() {
+        val currentQ = viewModel.getCurrentQuestion()
+        val userAnswers = mutableListOf<String>()
+
+        if (currentQ.type == QuestionType.CHECKBOX) {
+            checkBoxes.forEach {
+                if (it.isChecked) userAnswers.add(it.text.toString())
+            }
+        } else
+            userAnswers.add(etAnswer.text.toString())
+
+        viewModel.checkAnswer(userAnswers)
+
+        viewModel.moveToNext()
+    }
 }
