@@ -8,7 +8,7 @@ import android.widget.TextView
 import android.view.LayoutInflater
 
 class ProductAdapter (
-    private val productList: List<Product>,
+    private var productList: List<Product>,
     private val onClick: (Product) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_PRODUCT = 0
@@ -26,6 +26,10 @@ class ProductAdapter (
         return if ((position + 1) % 5 == 0) TYPE_AD else TYPE_PRODUCT
     }
 
+    fun updateData(newList: List<Product>) {
+        productList = newList
+        notifyDataSetChanged()
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == TYPE_AD) {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.item_ad, parent, false)
