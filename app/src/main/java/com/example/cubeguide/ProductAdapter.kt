@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.view.LayoutInflater
 
-abstract class ProductAdapter (
+class ProductAdapter (
     private val productList: List<Product>,
     private val onClick: (Product) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -36,7 +36,10 @@ abstract class ProductAdapter (
         }
     }
 
-    fun onBindViewHoder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: RecyclerView.ViewHolder,
+        position: Int
+    ) {
         if (getItemViewType(position) == TYPE_PRODUCT) {
             val productHolder = holder as ProductViewHolder
             val product = productList[position]
