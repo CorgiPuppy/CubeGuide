@@ -1,5 +1,6 @@
 package com.example.cubeguide
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -56,10 +57,15 @@ class QuizFragment : Fragment() {
         return view
     }
 
+    @SuppressLint("SetTextI18n")
     private fun updateUI() {
         val question = viewModel.getCurrentQuestion()
 
-        tvProgress.text = "Вопрос ${viewModel.currentIndex + 1} из ${viewModel.getTotalQuestionsCount()}"
+        tvProgress.text = getString(
+            R.string.question_progress_format,
+            viewModel.currentIndex + 1,
+            viewModel.getTotalQuestionsCount()
+        )
         tvQuestion.text = question.text
 
         ivImage.visibility = View.GONE

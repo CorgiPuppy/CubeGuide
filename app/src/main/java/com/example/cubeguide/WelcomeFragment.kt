@@ -23,7 +23,7 @@ class WelcomeFragment : Fragment() {
         mActivity.setSupportActionBar(toolbar);
         var actionBar : ActionBar? = mActivity.supportActionBar
         if(actionBar != null){
-            actionBar.title = "CubeGuide"
+            actionBar.title = getString(R.string.app_name)
         }
 
         val testButton = view.findViewById<Button>(R.id.test_button)
@@ -42,7 +42,7 @@ class WelcomeFragment : Fragment() {
         shareButton.setOnClickListener {
             val sendIntent = android.content.Intent().apply {
                 action = android.content.Intent.ACTION_SEND
-                putExtra(android.content.Intent.EXTRA_TEXT, "Привет! Я изучаю Android и сделал крутой квиз CubeGuide!")
+                putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.share_message))
                 type = "text/plain"
             }
             val shareIntent = android.content.Intent.createChooser(sendIntent, null)

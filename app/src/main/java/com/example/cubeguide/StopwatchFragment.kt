@@ -21,7 +21,7 @@ class StopwatchFragment : Fragment() {
         mActivity.setSupportActionBar(toolbar);
         var actionBar : ActionBar? = mActivity.supportActionBar
         if(actionBar != null){
-            actionBar.title = "Секундомер"
+            actionBar.title = getString(R.string.stopwatch_title)
         }
         return view
     }
