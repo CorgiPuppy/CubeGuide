@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="fragment_product_details" type="id">fragment_product_details</item>
+</resources>
