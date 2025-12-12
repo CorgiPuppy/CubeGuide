@@ -22,7 +22,11 @@ class ResultFragment : Fragment() {
         val viewModel = ViewModelProvider(requireActivity()).get(QuizViewModel::class.java)
 
         val tvScore = view.findViewById<TextView>(R.id.tv_score)
-        tvScore.text = "Правильно: ${viewModel.score} из ${viewModel.getTotalQuestionsCount()}"
+        tvScore.text = getString(
+            R.string.result_score_format,
+            viewModel.score,
+            viewModel.getTotalQuestionsCount()
+        )
 
         val btnHome = view.findViewById<Button>(R.id.btn_home)
         btnHome.setOnClickListener {
