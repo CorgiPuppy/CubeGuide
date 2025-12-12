@@ -8,4 +8,5 @@
     android:name="androidx.navigation.fragment.NavHostFragment"
     app:navGraph="@navigation/nav_graph"
     app:defaultNavHost="true"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity" />

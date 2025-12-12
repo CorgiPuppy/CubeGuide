@@ -12,14 +12,14 @@
         style="@style/siteName_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Результат"/>
+        android:text="@string/result_title"/>
 
     <TextView
         android:id="@+id/tv_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="0/6"
+        android:text="@string/initial_score"
         android:textColor="@color/white"
         android:textSize="40sp"
         android:textStyle="bold"/>
@@ -29,6 +29,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="На главную" />
+        android:text="@string/button_home"/>
 
 </LinearLayout>

@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="16dp"
-            android:text="Вопрос 1 из 6"/>
+            android:text="@string/question_progress_format"/>
 
         <ImageView
             android:id="@+id/iv_question_image"
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="Текст вопроса" />
+            android:text="@string/question_placeholder" />
         <LinearLayout
             android:id="@+id/layout_checkboxes"
             android:layout_width="match_parent"
@@ -78,7 +78,7 @@
                 android:id="@+id/et_answer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ваш ответ"
+                android:hint="@string/answer_hint"
                 android:background="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="32dp"
-            android:text="Далее"/>
+            android:text="@string/button_next"/>
 
     </LinearLayout>
 </ScrollView>
