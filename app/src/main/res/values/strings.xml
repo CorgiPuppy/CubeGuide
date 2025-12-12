@@ -67,4 +67,13 @@
     <string name="q6_text">Как называется эта головоломка?</string>
     <string name="q6_a1">megaminx</string>
     <string name="q6_a2">мегаминкс</string>
+
+    <string name="nav_home">Главная</string>
+    <string name="nav_favourites">Избранное</string>
+    <string name="nav_cart">Корзина</string>
+    <string name="ad_title">РЕКЛАМА</string>
+    <string name="ad_desc">Здесь могла быть ваша реклама кубиков!</string>
+    <string name="button_add_to_cart">В корзины</string>
+    <string name="button_add_to_favourites">В избранное</string>
+    <string name="price_format">%d ₽</string>
 </resources>
