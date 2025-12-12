@@ -26,6 +26,12 @@ class WelcomeFragment : Fragment() {
             actionBar.title = getString(R.string.app_name)
         }
 
+        val shopButton = view.findViewById<Button>(R.id.shop_button)
+        shopButton.setOnClickListener {
+            view.findNavController()
+                .navigate(R.id.action_welcomeFragment_to_shopFragment)
+        }
+
         val testButton = view.findViewById<Button>(R.id.test_button)
         testButton.setOnClickListener {
             view.findNavController()
