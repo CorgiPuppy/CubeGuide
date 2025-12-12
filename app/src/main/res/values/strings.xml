@@ -49,6 +49,7 @@
     <string name="q3_text">сколько граней у классического кубика Рубика? (число)</string>
     <string name="q3_a1">6</string>
     <string name="q3_a2">шесть</string>
+    <string name="q3_a3">six</string>
 
     <string name="q4_text">Как называется головоломка в форме додекаэдра?</string>
     <string name="q4_a1">megaminx</string>
@@ -61,6 +62,7 @@
     <string name="q5_a4">четыре на четыре</string>
     <string name="q5_a5">четыре x четыре</string>
     <string name="q5_a6">четыре х четыре</string>
+    <string name="q5_a7">four on four</string>
 
     <string name="q6_text">Как называется эта головоломка?</string>
     <string name="q6_a1">megaminx</string>
