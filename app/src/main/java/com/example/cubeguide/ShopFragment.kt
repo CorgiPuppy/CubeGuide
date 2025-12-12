@@ -16,6 +16,7 @@ class ShopFragment : Fragment() {
     private lateinit var viewModel: ShopViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var bottomNav:BottomNavigationView
+    private lateinit var adapter: ProductAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,24 +29,29 @@ class ShopFragment : Fragment() {
         recyclerView = view.findViewById(R.id.rv_products)
         bottomNav = view.findViewById(R.id.bottom_nav_view)
 
-        val adapter = ProductAdapter(viewModel.products) { product ->
+        adapter = ProductAdapter(viewModel.products) { product ->
             viewModel.selectedProduct = product
             findNavController().navigate(R.id.action_shopFragment_to_productDetailsFragment)
         }
         recyclerView.adapter = adapter
 
+        recyclerView.layoutManager = LinearLayoutManager(context)
+
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
                     recyclerView.layoutManager = LinearLayoutManager(context)
+                    adapter.updateData(viewModel.products)
                     true
                 }
                 R.id.nav_favourites -> {
                     recyclerView.layoutManager = GridLayoutManager(context, 2)
+                    adapter.updateData(viewModel.favList)
                     true
                 }
                 R.id.nav_cart -> {
                     recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                    adapter.updateData(viewModel.cartList)
                     true
                 }
                 else -> false
@@ -67,8 +73,6 @@ class ShopFragment : Fragment() {
                 badge.isVisible = true
             }
         }
-
-        recyclerView.layoutManager = LinearLayoutManager(context)
 
         return view
     }
