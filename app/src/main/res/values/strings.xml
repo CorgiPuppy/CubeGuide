@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CubeGuide</string>
+    <string name="app_name">CubeGuide lab2-3</string>
 
     <string name="logo_description">Rubik\'s Cube</string>
     <string name="megaminx_description">Megaminx</string>
@@ -76,4 +76,16 @@
     <string name="button_add_to_cart">В корзины</string>
     <string name="button_add_to_favourites">В избранное</string>
     <string name="price_format">%d </string>
+
+    <string name="title_add_product">Добавить товар</string>
+    <string name="btn_pick_image">Выбрать фото</string>
+    <string name="hint_product_name">Название товара</string>
+    <string name="hint_product_desc">Описание</string>
+    <string name="hint_product_price">Цена (число)</string>
+    <string name="label_category">Категория:</string>
+    <string name="btn_save_product">Сохранить в БД</string>
+    <string name="toast_saved">Товар добавлен!</string>
+    <string name="toast_error_fields">Заполните поля и категорию</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
