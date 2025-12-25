@@ -11,7 +11,8 @@ import com.example.cubeguide.data.Product
 
 class ProductAdapter(
     private var productList: List<Product>,
-    private val onClick: (Product) -> Unit
+    private val onClick: (Product) -> Unit,
+    private val onLongClick: (Product) -> Unit // Новый параметр
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val TYPE_PRODUCT = 0
@@ -25,8 +26,16 @@ class ProductAdapter(
 
     class AdViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
+    // Логика рекламы (каждый 5-й)
     override fun getItemViewType(position: Int): Int {
         return if ((position + 1) % 5 == 0) TYPE_AD else TYPE_PRODUCT
+    }
+
+    // Корректировка количества элементов (товары + реклама)
+    override fun getItemCount(): Int {
+        if (productList.isEmpty()) return 0
+        val adsCount = productList.size / 4
+        return productList.size + adsCount
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -42,24 +51,33 @@ class ProductAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) == TYPE_PRODUCT) {
             val productHolder = holder as ProductViewHolder
-            val product = productList[position]
 
-            productHolder.title.text = product.name
-            productHolder.price.text = "${product.price} ₽"
+            val adsBefore = (position + 1) / 5
+            val realIndex = position - adsBefore
 
-            Glide.with(holder.itemView.context)
-                .load(product.imageUri)
-                .placeholder(R.drawable.logo)
-                .error(R.drawable.logo)
-                .into(productHolder.image)
+            if (realIndex < productList.size) {
+                val product = productList[realIndex]
 
-            holder.itemView.setOnClickListener {
-                onClick(product)
+                productHolder.title.text = product.name
+                productHolder.price.text = "${product.price} ₽"
+
+                Glide.with(holder.itemView.context)
+                    .load(product.imageUri)
+                    .placeholder(R.drawable.logo)
+                    .error(R.drawable.logo)
+                    .into(productHolder.image)
+
+                holder.itemView.setOnClickListener {
+                    onClick(product)
+                }
+
+                holder.itemView.setOnLongClickListener {
+                    onLongClick(product)
+                    true
+                }
             }
         }
     }
-
-    override fun getItemCount(): Int = productList.size
 
     fun updateData(newList: List<Product>) {
         productList = newList

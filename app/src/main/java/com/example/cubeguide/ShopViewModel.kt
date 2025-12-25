@@ -19,6 +19,7 @@ class ShopViewModel(application: Application) : AndroidViewModel(application) {
 
     val cartList = mutableListOf<Product>()
     val favList = mutableListOf<Product>()
+
     val cartCount = MutableLiveData(0)
     val favCount = MutableLiveData(0)
 
@@ -44,15 +45,39 @@ class ShopViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun addToCart() {
-        if (selectedProduct != null && !cartList.contains(selectedProduct)) {
-            cartList.add(selectedProduct!!)
-            cartCount.value = cartList.size
+        if (selectedProduct != null) {
+            val exists = cartList.any { it.id == selectedProduct!!.id }
+            if (!exists) {
+                cartList.add(selectedProduct!!)
+                cartCount.value = cartList.size
+            }
         }
     }
 
-    fun addToFav() {
-        if (selectedProduct != null && !favList.contains(selectedProduct)) {
-            favList.add(selectedProduct!!)
+    fun toggleFav() {
+        if (selectedProduct != null) {
+            val exists = favList.any { it.id == selectedProduct!!.id }
+            if (exists) {
+                favList.removeAll { it.id == selectedProduct!!.id }
+            } else {
+                favList.add(selectedProduct!!)
+            }
+            favCount.value = favList.size
+        }
+    }
+
+    fun isProductFav(product: Product): Boolean {
+        return favList.any { it.id == product.id }
+    }
+
+    fun deleteProductFull(product: Product) {
+        viewModelScope.launch {
+            dao.deleteProduct(product)
+
+            cartList.removeAll { it.id == product.id }
+            favList.removeAll { it.id == product.id }
+
+            cartCount.value = cartList.size
             favCount.value = favList.size
         }
     }

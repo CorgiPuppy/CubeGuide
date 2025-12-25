@@ -2,6 +2,7 @@ package com.example.cubeguide.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 
@@ -18,4 +19,7 @@ interface ShopDao {
 
     @Insert
     suspend fun insertProduct(product: Product)
+
+    @Delete
+    suspend fun deleteProduct(product: Product)
 }
