@@ -27,11 +27,11 @@ class ProductDetailsFragment : Fragment() {
             view.findViewById<TextView>(R.id.tv_detail_price).text = "${product.price} ₽"
         }
 
-        view.findViewById<Button>(R.id.button_detail_cart).setOnClickListener {
+        view.findViewById<Button>(R.id.btn_detail_cart).setOnClickListener {
             viewModel.addToCart()
         }
 
-        view.findViewById<Button>(R.id.button_detail_fav).setOnClickListener {
+        view.findViewById<Button>(R.id.btn_detail_fav).setOnClickListener {
             viewModel.addToFav()
         }
 
