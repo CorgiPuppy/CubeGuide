@@ -36,9 +36,6 @@ class ProductDetailsFragment : Fragment() {
             view.findViewById<TextView>(R.id.tv_detail_title).text = product.name
             view.findViewById<TextView>(R.id.tv_detail_desc).text = product.description
             view.findViewById<TextView>(R.id.tv_detail_price).text = "${product.price} ₽"
-
-            // Устанавливаем правильный текст кнопки при открытии
-            updateFavButtonText(btnFav, product.isFavorite)
         }
 
         view.findViewById<Button>(R.id.btn_detail_cart).setOnClickListener {
@@ -46,31 +43,6 @@ class ProductDetailsFragment : Fragment() {
             Toast.makeText(context, "Добавлено в корзину", Toast.LENGTH_SHORT).show()
         }
 
-        btnFav.setOnClickListener {
-            viewModel.toggleFavorite()
-            // Так как объект product во ViewModel изменился, обновляем UI здесь
-            product?.let {
-                // Визуально меняем состояние для пользователя сразу
-                // (хотя данные в БД летят асинхронно, для UI это ок)
-                updateFavButtonText(btnFav, !it.isFavorite)
-            }
-
-            // Показываем разный текст
-            if (product?.isFavorite == true) { // было true, станет false
-                Toast.makeText(context, "Удалено из избранного", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(context, "Добавлено в избранное", Toast.LENGTH_SHORT).show()
-            }
-        }
-
         return view
-    }
-
-    private fun updateFavButtonText(button: Button, isFav: Boolean) {
-        if (isFav) {
-            button.text = "Удалить из избранного"
-        } else {
-            button.text = "В избранное"
-        }
     }
 }

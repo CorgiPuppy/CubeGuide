@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CubeGuide lab2-3</string>
+    <string name="app_name">CubeGuide</string>
 
     <string name="logo_description">Rubik\'s Cube</string>
     <string name="megaminx_description">Megaminx</string>

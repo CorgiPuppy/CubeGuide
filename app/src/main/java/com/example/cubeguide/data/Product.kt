@@ -21,6 +21,5 @@ data class Product(
     val description: String,
     val price: Int,
     val imageUri: String,
-    val categoryId: Int,
-    var isFavorite: Boolean = false // <-- НОВОЕ ПОЛЕ
+    val categoryId: Int
 )
