@@ -53,11 +53,6 @@
         android:label="AddProductFragment"
         tools:layout="@layout/fragment_add_product" />
     <fragment
-        android:id="@+id/cartFragment"
-        android:name="com.example.cubeguide.CartFragment"
-        android:label="CartFragment"
-        tools:layout="@layout/fragment_cart" />
-    <fragment
         android:id="@+id/shopFragment"
         android:name="com.example.cubeguide.ShopFragment"
         android:label="fragment_shop"
@@ -68,15 +63,10 @@
         <action
             android:id="@+id/action_shopFragment_to_addProductFragment"
             app:destination="@id/addProductFragment" />
-        <action
-            android:id="@+id/action_shopFragment_to_cartFragment"
-            app:destination="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/productDetailsFragment"
         android:name="com.example.cubeguide.ProductDetailsFragment"
         android:label="fragment_product_details"
         tools:layout="@layout/fragment_product_details" />
-
-
 </navigation>
