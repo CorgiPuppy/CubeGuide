@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Category::class, Product::class], version = 1)
+@Database(entities = [Category::class, Product::class, CartItem::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun shopDao(): ShopDao
 
@@ -19,7 +19,9 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "shop_db"
-                ).build()
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = instance
                 instance
             }

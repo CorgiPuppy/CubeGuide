@@ -3,11 +3,12 @@ package com.example.cubeguide
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.cubeguide.data.AppDatabase
+import com.example.cubeguide.data.CartItem
 import com.example.cubeguide.data.Category
 import com.example.cubeguide.data.Product
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ShopViewModel(application: Application) : AndroidViewModel(application) {
@@ -16,69 +17,84 @@ class ShopViewModel(application: Application) : AndroidViewModel(application) {
 
     val allProducts: LiveData<List<Product>> = dao.getAllProducts()
     val allCategories: LiveData<List<Category>> = dao.getAllCategories()
-
-    val cartList = mutableListOf<Product>()
-    val favList = mutableListOf<Product>()
-
-    val cartCount = MutableLiveData(0)
-    val favCount = MutableLiveData(0)
+    val favProducts: LiveData<List<Product>> = dao.getFavouriteProducts()
+    val cartItems: LiveData<List<CartItem>> = dao.getCartItems()
 
     var selectedProduct: Product? = null
 
+    fun addToCart(product: Product) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val existingItem = dao.getCartItemByName(product.name)
+
+            if (existingItem != null) {
+                val updatedItem = existingItem.copy(quantity = existingItem.quantity + 1)
+                dao.updateCartItem(updatedItem)
+            } else {
+                val newItem = CartItem(
+                    name = product.name,
+                    price = product.price,
+                    imageUri = product.imageUri,
+                    quantity = 1
+                )
+                dao.insertCartItem(newItem)
+            }
+        }
+    }
+
+    fun updateCartItemQuantity(item: CartItem, newQuantity: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val updatedItem = item.copy(quantity = newQuantity)
+            dao.updateCartItem(updatedItem)
+        }
+    }
+
+    fun removeFromCart(item: CartItem) {
+        viewModelScope.launch(Dispatchers.IO) {
+            dao.deleteCartItem(item)
+        }
+    }
+
+    fun clearCart() {
+        viewModelScope.launch(Dispatchers.IO) {
+            dao.clearCart()
+        }
+    }
+
+    fun toggleFavourite(product: Product) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val updatedProduct = product.copy(isFavourite = !product.isFavourite)
+            dao.updateProduct(updatedProduct)
+        }
+    }
+
     fun addCategory(name: String) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             dao.insertCategory(Category(name = name))
         }
     }
 
-    fun addProductToDb(name: String, desc: String, price: Int, imageUri: String, catId: Int) {
-        viewModelScope.launch {
+    fun addProductToDb(name: String, desc: String, price: Int, imgUri: String, catId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
             val newProduct = Product(
                 name = name,
                 description = desc,
                 price = price,
-                imageUri = imageUri,
-                categoryId = catId
+                imageUri = imgUri,
+                categoryId = catId,
+                isFavourite = false
             )
             dao.insertProduct(newProduct)
         }
     }
 
-    fun addToCart() {
-        if (selectedProduct != null) {
-            val exists = cartList.any { it.id == selectedProduct!!.id }
-            if (!exists) {
-                cartList.add(selectedProduct!!)
-                cartCount.value = cartList.size
-            }
-        }
-    }
-
-    fun toggleFav() {
-        if (selectedProduct != null) {
-            val exists = favList.any { it.id == selectedProduct!!.id }
-            if (exists) {
-                favList.removeAll { it.id == selectedProduct!!.id }
-            } else {
-                favList.add(selectedProduct!!)
-            }
-            favCount.value = favList.size
-        }
-    }
-
-    fun isProductFav(product: Product): Boolean {
-        return favList.any { it.id == product.id }
-    }
-
     fun deleteProductFull(product: Product) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             dao.deleteProduct(product)
 
-            cartList.removeAll { it.id == product.id }
-            favList.removeAll { it.id == product.id }
-
-            cartCount.value = cartList.size
-            favCount.value = favList.size
+            val cartItem = dao.getCartItemByName(product.name)
+            if (cartItem != null) {
+                dao.deleteCartItem(cartItem)
+            }
         }
     }
 }

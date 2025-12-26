@@ -21,47 +21,29 @@ class ProductDetailsFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_product_details, container, false)
         val viewModel = ViewModelProvider(requireActivity()).get(ShopViewModel::class.java)
         val product = viewModel.selectedProduct
-        val btnFav = view.findViewById<Button>(R.id.btn_detail_fav)
 
         if (product != null) {
-            val imageView = view.findViewById<ImageView>(R.id.iv_detail_image)
-            Glide.with(this)
-                .load(product.imageUri)
-                .placeholder(R.drawable.logo)
-                .error(R.drawable.logo)
-                .into(imageView)
-
             view.findViewById<TextView>(R.id.tv_detail_title).text = product.name
             view.findViewById<TextView>(R.id.tv_detail_desc).text = product.description
             view.findViewById<TextView>(R.id.tv_detail_price).text = "${product.price} ₽"
 
-            // Установка правильного текста кнопки при открытии
-            updateFavButton(btnFav, viewModel.isProductFav(product))
-        }
+            val img = view.findViewById<ImageView>(R.id.iv_detail_image)
+            Glide.with(this).load(product.imageUri).placeholder(R.drawable.logo).into(img)
 
-        view.findViewById<Button>(R.id.btn_detail_cart).setOnClickListener {
-            viewModel.addToCart()
-            Toast.makeText(context, "Добавлено в корзину", Toast.LENGTH_SHORT).show()
-        }
+            val btnFav = view.findViewById<Button>(R.id.btn_detail_fav)
+            btnFav.text = if (product.isFavourite) "Убрать из избранного" else "В избранное"
 
-        btnFav.setOnClickListener {
-            viewModel.toggleFav()
-            product?.let {
-                val isFav = viewModel.isProductFav(it)
-                updateFavButton(btnFav, isFav)
-                val msg = if (isFav) "Добавлено в избранное" else "Удалено из избранного"
-                Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+            btnFav.setOnClickListener {
+                viewModel.toggleFavourite(product)
+                btnFav.text = if (!product.isFavourite) "Убрать из избранного" else "В избранное"
+                Toast.makeText(context, "Статус избранного изменен", Toast.LENGTH_SHORT).show()
+            }
+
+            view.findViewById<Button>(R.id.btn_detail_cart).setOnClickListener {
+                viewModel.addToCart(product)
+                Toast.makeText(context, "Добавлено в корзину", Toast.LENGTH_SHORT).show()
             }
         }
-
         return view
-    }
-
-    private fun updateFavButton(btn: Button, isFav: Boolean) {
-        if (isFav) {
-            btn.text = "Удалить из избранного"
-        } else {
-            btn.text = "В избранное"
-        }
     }
 }

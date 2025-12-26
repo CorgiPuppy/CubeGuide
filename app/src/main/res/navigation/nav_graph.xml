@@ -8,65 +8,96 @@
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.example.cubeguide.WelcomeFragment"
-        android:label="WelcomeFragment" >
-        <action
-            android:id="@+id/action_welcomeFragment_to_stopwatchFragment"
-            app:destination="@id/stopwatchFragment" />
+        android:label="Welcome"
+        tools:layout="@layout/fragment_welcome">
+
         <action
             android:id="@+id/action_welcomeFragment_to_quizFragment"
             app:destination="@id/quizFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_stopwatchFragment"
+            app:destination="@id/stopwatchFragment" />
+
+        <!-- Кнопка "Магазин" на главном экране ведет сюда -->
         <action
             android:id="@+id/action_welcomeFragment_to_shopFragment"
             app:destination="@id/shopFragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/stopwatchFragment"
-        android:name="com.example.cubeguide.StopwatchFragment"
-        android:label="StopwatchFragment" >
-    </fragment>
-
+    <!-- Квиз -->
     <fragment
         android:id="@+id/quizFragment"
         android:name="com.example.cubeguide.QuizFragment"
-        android:label="QuizFragment" >
+        android:label="Quiz"
+        tools:layout="@layout/fragment_quiz">
         <action
             android:id="@+id/action_quizFragment_to_resultFragment"
             app:destination="@id/resultFragment"
             app:popUpTo="@id/welcomeFragment"
-            app:popUpToInclusive="false"/>
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
         android:id="@+id/resultFragment"
         android:name="com.example.cubeguide.ResultFragment"
-        android:label="ResultFragment" >
+        android:label="Result"
+        tools:layout="@layout/fragment_result">
         <action
             android:id="@+id/action_resultFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment"
             app:popUpTo="@id/welcomeFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
+
     <fragment
-        android:id="@+id/addProductFragment"
-        android:name="com.example.cubeguide.AddProductFragment"
-        android:label="AddProductFragment"
-        tools:layout="@layout/fragment_add_product" />
+        android:id="@+id/stopwatchFragment"
+        android:name="com.example.cubeguide.StopwatchFragment"
+        android:label="Stopwatch"
+        tools:layout="@layout/fragment_stopwatch" />
+
     <fragment
         android:id="@+id/shopFragment"
         android:name="com.example.cubeguide.ShopFragment"
-        android:label="fragment_shop"
-        tools:layout="@layout/fragment_shop" >
+        android:label="Shop"
+        tools:layout="@layout/fragment_shop">
+        <action
+            android:id="@+id/action_shopFragment_to_addProductFragment"
+            app:destination="@id/addProductFragment" />
         <action
             android:id="@+id/action_shopFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
         <action
-            android:id="@+id/action_shopFragment_to_addProductFragment"
-            app:destination="@id/addProductFragment" />
+            android:id="@+id/action_shopFragment_to_favouritesFragment"
+            app:destination="@id/favouritesFragment" />
+        <action
+            android:id="@+id/action_shopFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.example.cubeguide.AddProductFragment"
+        android:label="Add Product"
+        tools:layout="@layout/fragment_add_product" />
     <fragment
         android:id="@+id/productDetailsFragment"
         android:name="com.example.cubeguide.ProductDetailsFragment"
-        android:label="fragment_product_details"
+        android:label="Product Details"
         tools:layout="@layout/fragment_product_details" />
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="com.example.cubeguide.FavouritesFragment"
+        android:label="Favourites"
+        tools:layout="@layout/fragment_favourites">
+        <action
+            android:id="@+id/action_favouritesFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.cubeguide.CartFragment"
+        android:label="Cart"
+        tools:layout="@layout/fragment_cart" />
+
 </navigation>
